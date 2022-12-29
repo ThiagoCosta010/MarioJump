@@ -3,7 +3,6 @@ const pipe = document.querySelector('.pipe')
 
 const jump = () => {
     mario.classList.add('jump')
-
     setTimeout(() => {
         mario.classList.remove('jump')
     }, 500)
@@ -11,10 +10,8 @@ const jump = () => {
 const loop = setInterval(() => {
 
     const pipePosition = pipe.offsetLeft
-    const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '')
-
+    const marioPosition = +window.getComputedStyle(mario).bottom.replace('px','')
     console.log(loop)
-
     if(pipePosition > 0 && pipePosition <= 120 && marioPosition < 80){
         pipe.style.animation = 'none'
         pipe.style.left = `${pipePosition}px`
@@ -26,12 +23,10 @@ const loop = setInterval(() => {
         mario.style.width = '75px'
         mario.style.marginLeft = '50px'
 
-        setInterval(function() {
+        setTimeout(() => {
             location.reload()
         }, 2000)
-
-        setInterval(loop)
     }
+    setInterval(loop)
 }, 10)
-
 document.addEventListener('keydown', jump)
